@@ -55,4 +55,12 @@ public class FileService {
 	            throw new IllegalStateException(e);
 	        }
 	    }
+	 
+	 public byte[] downloadProfileImage(String username) {
+		 TestModel user = testModelRepository.findByUserName(username).get();
+		 String path = String.format("%s/%s", bucketName.toString(), user.getUserName());
+	        return Optional.ofNullable(user.getProfilePicLink())
+	                .map(key -> s3Service.download(path, key))
+	                .orElse(new byte[0]);
+	    }
 }

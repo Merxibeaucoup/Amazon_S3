@@ -2,6 +2,7 @@ package com.edgar.springbootS3.controller;
 
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -38,6 +39,12 @@ public class UserController {
 	                                                @RequestParam("file") MultipartFile file) {
 	        fileService.uploadProfileImage(username, file);
 	        return ResponseEntity.ok().build();
+	    }
+	 
+	 
+	 @GetMapping("/{username}/image/download")
+	    ResponseEntity<byte[]> downloadUserProfileImage(@PathVariable String username) {
+	        return ResponseEntity.ok(fileService.downloadProfileImage(username));
 	    }
 	
 	
