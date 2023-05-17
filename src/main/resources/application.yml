@@ -1,0 +1,19 @@
+cloud:
+  aws:
+    region:
+      static: us-east-1
+      auto: false
+    stack:
+      auto: false
+    credentials:
+      access-key: /* acess key */
+      secret-key: /* secret key */
+
+application:
+  bucket:
+    name: /* bucket name */     
+      
+server:
+  port: 8443  
+  
+ 
